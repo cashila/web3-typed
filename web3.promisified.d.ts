@@ -4,7 +4,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module 'web3' {
-  import BigNumber from 'bignumber.js';
+  import BigNumber from "bignumber.js";
 
   type BlockNumberOrHash = number | string;
   type VersionCallback = (err: any, version: string) => void;
@@ -33,7 +33,7 @@ declare module 'web3' {
   namespace Web3 {
     export type WeiUnit = "kwei" | "ada" | "mwei" | "babbage" | "gwei" | "shannon" | "szabo" | "finney" | "ether" | "kether" | "grand" | "einstein" | "mether" | "gether" | "tether";
 
-    export interface Version {
+    export class Version {
       /**
        * The ethereum js api version
        */
@@ -63,21 +63,37 @@ declare module 'web3' {
        * The client/node version
        */
       getNode(callback: VersionCallback): void;
+      /**
+       * The client/node version
+      */
+      getNodeAsync(): Promise<string>;
 
       /**
        * The network protocol version
        */
       getNetwork(callback: VersionCallback): void;
+      /**
+       * The network protocol version
+      */
+      getNetworkAsync(): Promise<string>;
 
       /**
        * The ethereum protocol version
        */
       getEthereum(callback: VersionCallback): void;
+      /**
+       * The ethereum protocol version
+      */
+      getEthereumAsync(): Promise<string>;
 
       /**
        * The whisper protocol version
        */
       getWhisper(callback: VersionCallback): void;
+      /**
+       * The whisper protocol version
+      */
+      getWhisperAsync(): Promise<string>;
     }
 
     export interface Sha3Options {
@@ -104,11 +120,15 @@ declare module 'web3' {
       highestBlock: number;
     }
 
-    export interface IsSyncing {
+    export class IsSyncing {
       /**
        * Adds another callback, which will be called when the node starts or stops syncing.
        */
       addCallback(callback?: GetSyncingCallback): IsSyncing;
+      /**
+       * Adds another callback, which will be called when the node starts or stops syncing.
+      */
+      addCallbackAsync(): Promise<Web3.SyncingResult>;
 
       /**
        * Stops the syncing callbacks.
@@ -416,9 +436,11 @@ declare module 'web3' {
       topics?: any[];
     }
 
-    export interface Filter {
+    export class Filter {
       get(callback: (err: any, result: any) => void): void;
+      getAsync(): Promise<any>;
       watch(callback: FilterCallback): void;
+      watchAsync(): Promise<string | Web3.Log>;
       stopWatching(): void;
     }
 
@@ -434,7 +456,7 @@ declare module 'web3' {
       at(address: string): T;
     }
 
-    export interface Contract {
+    export class Contract {
       /**
        * Contract address
        */
@@ -451,8 +473,16 @@ declare module 'web3' {
       allEvents(options: "latest" | "pending" | FilterOptions, callback: FilterCallback): Filter;
       /**
        * Will call the callback for all events which are created by this contract
+      */
+      allEventsAsync(options: "latest" | "pending" | FilterOptions): Promise<string | Web3.Log>;
+      /**
+       * Will call the callback for all events which are created by this contract
        */
       allEvents(callback: FilterCallback): Filter;
+      /**
+       * Will call the callback for all events which are created by this contract
+      */
+      allEventsAsync(): Promise<string | Web3.Log>;
       /**
        * Will call the callback for all events which are created by this contract
        */
@@ -1124,4 +1154,5 @@ declare module 'web3' {
   }
 
   export = Web3;
-} 
+}
+

@@ -33,7 +33,7 @@ declare module 'web3' {
   namespace Web3 {
     export type WeiUnit = "kwei" | "ada" | "mwei" | "babbage" | "gwei" | "shannon" | "szabo" | "finney" | "ether" | "kether" | "grand" | "einstein" | "mether" | "gether" | "tether";
 
-    export interface Version {
+    export class Version {
       /**
        * The ethereum js api version
        */
@@ -104,7 +104,7 @@ declare module 'web3' {
       highestBlock: number;
     }
 
-    export interface IsSyncing {
+    export class IsSyncing {
       /**
        * Adds another callback, which will be called when the node starts or stops syncing.
        */
@@ -416,7 +416,7 @@ declare module 'web3' {
       topics?: any[];
     }
 
-    export interface Filter {
+    export class Filter {
       get(callback: (err: any, result: any) => void): void;
       watch(callback: FilterCallback): void;
       stopWatching(): void;
@@ -434,7 +434,7 @@ declare module 'web3' {
       at(address: string): T;
     }
 
-    export interface Contract {
+    export class Contract {
       /**
        * Contract address
        */
