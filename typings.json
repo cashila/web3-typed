@@ -1,8 +1,0 @@
-{
-  "name": "web3.js",
-  "version": "^0.17.0-beta",
-  "main": "web3.d.ts",
-  "dependencies": {
-    "bignumber.js": "registry:npm/bignumber.js#2.4.0+20160714211320"
-  }
-}

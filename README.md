@@ -1,5 +1,12 @@
 # Web3 declaration file
 
+## Install
+
+```
+typings install --save bignumber.js
+npm install --save-dev git+https://git@github.com/cashila/web3-typed
+```
+
 ## Usage
 
 ### Basic Usage

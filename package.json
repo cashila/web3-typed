@@ -1,0 +1,16 @@
+{
+  "name": "web3-typed",
+  "version": "0.17.0-beta",
+  "description": "web3.js typescript declaration",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cashila/web3-typed.git"
+  },
+  "author": "ICONOMI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cashila/web3-typed/issues"
+  },
+  "homepage": "https://github.com/cashila/web3-typed#readme",
+  "types": "web3.d.ts"
+}
