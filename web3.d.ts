@@ -949,7 +949,11 @@ declare module 'web3' {
     /**
      * Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
      */
-    call(request: Web3.TransactionRequest, block: BlockNumberOrHash): string;
+    call(request: Web3.TransactionRequest, callback: CallCallback): void;
+    /**
+     * Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
+     */
+    call(request: Web3.TransactionRequest, block?: BlockNumberOrHash): string;
 
     /**
      * Executes a message call or transaction, which is directly executed in the VM of the node, but never mined into the blockchain and returns the amount of the gas used.
