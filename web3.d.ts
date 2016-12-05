@@ -831,15 +831,15 @@ declare module 'web3' {
     /**
      * Get the code at a specific address.
      */
-    getCode(address: string, position: number, block: BlockNumberOrHash, callback: GetCodeCallback): void;
+    getCode(address: string, block: BlockNumberOrHash, callback: GetCodeCallback): void;
     /**
      * Get the code at a specific address.
      */
-    getCode(address: string, position: number, callback: GetCodeCallback): void;
+    getCode(address: string, callback: GetCodeCallback): void;
     /**
      * Get the code at a specific address.
      */
-    getCode(address: string, position: number, block?: BlockNumberOrHash): string;
+    getCode(address: string, block?: BlockNumberOrHash): string;
 
     /**
      * Returns a block matching the block number or block hash.
