@@ -434,6 +434,16 @@ declare module 'web3' {
       at(address: string): T;
     }
 
+    export interface Method<R> {
+      (): R;
+    }
+
+    export interface MethodObject<RET, CALL extends Method<RET>, REQUEST extends Method<string>, SEND extends Method<void>> {
+      call: CALL;
+      request: REQUEST;
+      sendTransaction: SEND;
+    }
+
     export class Contract {
       /**
        * Contract address
