@@ -438,10 +438,11 @@ declare module 'web3' {
       (): R;
     }
 
-    export interface MethodObject<RET, CALL extends Method<RET>, REQUEST extends Method<string>, SEND extends Method<void>> {
+    export interface MethodObject<RET, CALL extends Method<RET>, REQUEST extends Method<any>, SEND extends Method<string>, DATA extends Method<string>> {
       call: CALL;
       request: REQUEST;
       sendTransaction: SEND;
+      getData: DATA;
     }
 
     export class Contract {
