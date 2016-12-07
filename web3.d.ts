@@ -1021,6 +1021,7 @@ declare module "web3/abi" {
     inputs: Argument[];
     name: string;
     outputs: Argument[];
+    payable: boolean;
     type: "function";
   }
 
