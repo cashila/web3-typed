@@ -3,7 +3,7 @@
 // Definitions by: alesl https://github.com/alesl/
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare module 'web3' {
+declare module "web3" {
   import BigNumber from "bignumber.js";
 
   type BlockNumberOrHash = number | string;
@@ -541,10 +541,10 @@ declare module 'web3' {
 
     /**
      * The web3 object provides all methods.
-     * 
+     *
      * @example
      * // create an instance of web3 using the HTTP provider.
-     * // NOTE in mist web3 is already available, so check 
+     * // NOTE in mist web3 is already available, so check
      * // first if its available before instantiating
      * var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
      */
@@ -573,37 +573,37 @@ declare module 'web3' {
 
     /**
      * Converts any value into HEX
-     * 
-     * @param value The value to parse to HEX. If its an object or array it will be JSON.stringify first. 
+     *
+     * @param value The value to parse to HEX. If its an object or array it will be JSON.stringify first.
      * If its a BigNumber it will make it the HEX value of a number.
      */
     toHex(value: any): string;
 
     /**
      * Converts a HEX string into a ASCII string
-     * 
+     *
      * @param value A HEX string to be converted to ascii
      */
     toAscii(value: string): string;
 
     /**
      * Converts any ASCII string to a HEX string.
-     * 
+     *
      * @param value An ASCII string to be converted to HEX.
-     * @param padding The number of bytes the returned HEX string should have. 
+     * @param padding The number of bytes the returned HEX string should have.
      */
     fromAscii(value: string, padding?: number): string;
 
     /**
      * Converts a HEX string to its number representation.
-     * 
+     *
      * @param value An HEX string to be converted to a number
      */
     toDecimal(value: string): number;
 
     /**
      * Converts a number or number string to its HEX representation.
-     * 
+     *
      * @param value A number to be converted to a HEX string.
      */
     fromDecimal(value: number | string): string;
@@ -620,9 +620,9 @@ declare module 'web3' {
      * - mether
      * - gether
      * - tether
-     * 
-     * @param value 
-     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether 
+     *
+     * @param value
+     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether
      */
     fromWei(value: number | string, unit: Web3.WeiUnit): String;
 
@@ -638,9 +638,9 @@ declare module 'web3' {
      * - mether
      * - gether
      * - tether
-     * 
-     * @param value 
-     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether 
+     *
+     * @param value
+     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether
      */
     fromWei(value: BigNumber, unit: Web3.WeiUnit): BigNumber;
 
@@ -656,9 +656,9 @@ declare module 'web3' {
      * - mether
      * - gether
      * - tether
-     * 
-     * @param value 
-     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether 
+     *
+     * @param value
+     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether
      */
     toWei(value: number | string, unit: Web3.WeiUnit): String;
 
@@ -674,9 +674,9 @@ declare module 'web3' {
      * - mether
      * - gether
      * - tether
-     * 
-     * @param value 
-     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether 
+     *
+     * @param value
+     * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether
      */
     toWei(value: BigNumber, unit: Web3.WeiUnit): BigNumber;
 
@@ -774,13 +774,13 @@ declare module 'web3' {
      * - web3.eth.call()
      * - contract.myMethod.call()
      * - contract.myMethod.estimateGas()
-     * 
+     *
      * Default block parameters can be one of the following:
      * - number - a block number
      * - string - "earliest", the genisis block
      * - string - "latest", the latest block (current head of the blockchain)
      * - string - "pending", the currently mined block (including pending transactions)
-     * 
+     *
      * Default is latest
      */
     defaultBlock: string | number;
@@ -1168,8 +1168,6 @@ declare module 'web3' {
      * Gets a list of available compilers.
      */
     getCompilers(): string[];
-
-
   }
 
   export = Web3;
