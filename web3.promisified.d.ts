@@ -1201,9 +1201,15 @@ declare module "web3/abi" {
     type: "constructor";
   }
 
+  interface Indexed {
+    indexed: boolean;
+  }
+
+  export type LogArgument = Argument & Indexed;
+
   export interface Event {
     anonymous: boolean;
-    inputs: Argument[];
+    inputs: LogArgument[];
     name: string;
     type: "event";
   }
