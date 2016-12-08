@@ -343,6 +343,12 @@ declare module "web3" {
        * integer of the log index position in the block. null when its pending log
        */
       logIndex: number;
+
+      /**
+       * Array of 0 to 4 32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of
+       * the signature of the event (e.g. Deposit(address,bytes32,uint256)), except if you declared the event
+       * with the anonymous specifier.)
+       */
       topics: string[];
 
       /**
@@ -354,8 +360,6 @@ declare module "web3" {
        * 32 Bytes - hash of the transactions this log was created from. null when its pending log
        */
       transactionIndex: number;
-
-      type: string;
     }
 
     export interface TransactionRequest {
