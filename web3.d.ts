@@ -288,16 +288,6 @@ declare module "web3" {
       transactionIndex: number;
 
       /**
-       * 20 Bytes - address of the sender
-       */
-      from: string;
-
-      /**
-       * 20 Bytes - address of the receiver. null when its a contract creation transaction
-       */
-      to: string;
-
-      /**
        * The total amount of gas used when this transaction was executed in the block
        */
       cumulativeGasUsed: number;
