@@ -1190,6 +1190,11 @@ declare module "web3/abi" {
     type: "function";
   }
 
+  export interface Fallback {
+    payable: boolean;
+    type: "fallback";
+  }
+
   export interface Constructor {
     inputs: Argument[];
     type: "constructor";
@@ -1208,7 +1213,7 @@ declare module "web3/abi" {
     type: "event";
   }
 
-  export type DefinitionItem = Function | Constructor | Event;
+  export type DefinitionItem = Function | Fallback | Constructor | Event;
   export type Definition = DefinitionItem[];
 }
 
