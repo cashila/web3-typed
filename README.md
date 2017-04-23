@@ -3,9 +3,20 @@
 ## Install
 
 ```
-typings install --save bignumber.js
-npm install --save-dev git+https://git@github.com/cashila/web3-typed
+npm i -D @types/bignumber.js
+npm i -D git+https://git@github.com/cashila/web3-typed
 ```
+
+Append to your tsconfig.json
+```json
+{
+    "typeRoots" : [
+      "node_modules/@types",
+      "node_modules/web3-typed/callback"
+    ]
+}
+```
+
 
 ## Usage
 

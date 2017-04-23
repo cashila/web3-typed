@@ -12,5 +12,7 @@
     "url": "https://github.com/cashila/web3-typed/issues"
   },
   "homepage": "https://github.com/cashila/web3-typed#readme",
-  "types": "web3.d.ts"
+  "dependencies": {
+    "@types/bignumber.js": "^4.0.2"
+  }
 }

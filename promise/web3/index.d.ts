@@ -4,34 +4,38 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "web3" {
-  import BigNumber from "bignumber.js";
+  import { BigNumber } from "bignumber.js";
   import { Definition as AbiDefinition } from "web3/abi";
 
   type BlockNumberOrHash = number | string;
-  type VersionCallback = (err: any, version: string) => void;
-  type IsSyncingCallback = (err: any, sync: boolean | Web3.SyncingResult) => void;
-  type GetSyncingCallback = (err: any, result: Web3.SyncingResult) => void;
-  type GetBalanceCallback = (err: any, result: BigNumber) => void;
-  type GetStorageAtCallback = (err: any, storage: string) => void;
-  type GetCodeCallback = (err: any, storage: string) => void;
-  type GetBlockCallback = (err: any, block: Web3.Block | null) => void;
-  type GetBlockTxCountCallback = (err: any, count: number) => void;
-  type GetUncleCallback = GetBlockCallback;
-  type GetTransactionCallback = (err: any, transaction: Web3.Transaction | null) => void;
-  type GetTxFromBlockCallback = GetTransactionCallback;
-  type GetTxReceiptCallback = (err: any, receipt: Web3.TransactionReceipt | null) => void;
-  type GetTxCountCallback = (err: any, count: number) => void;
-  type SendTxCallback = (err: any, transaction: string) => void;
-  type SignCallback = (err: any, signed: string) => void;
-  type CallCallback = (err: any, result: string) => void;
-  type EstimateGasCallback = (err: any, gasEstimation: number) => void;
-  type FilterCallback = (err: any, result: string | Web3.Log) => void;
-  type GetListeningCallback = (err: any, listening: boolean) => void;
-  type GetPeerCountCallback = (err: any, peerCount: number) => void;
-  type GetCompilerCallback = (err: any, compilers: string[]) => void;
-  type CompileCallback = (err: any, contractAndCompilerInfo: any) => void;
 
   namespace Web3 {
+
+    namespace Callbacks {
+      export type VersionCallback = (err: any, version: string) => void;
+      export type IsSyncingCallback = (err: any, sync: boolean | Web3.SyncingResult) => void;
+      export type GetSyncingCallback = (err: any, result: Web3.SyncingResult) => void;
+      export type GetBalanceCallback = (err: any, result: BigNumber) => void;
+      export type GetStorageAtCallback = (err: any, storage: string) => void;
+      export type GetCodeCallback = (err: any, storage: string) => void;
+      export type GetBlockCallback = (err: any, block: Web3.Block | null) => void;
+      export type GetBlockTxCountCallback = (err: any, count: number) => void;
+      export type GetUncleCallback = GetBlockCallback;
+      export type GetTransactionCallback = (err: any, transaction: Web3.Transaction | null) => void;
+      export type GetTxFromBlockCallback = GetTransactionCallback;
+      export type GetTxReceiptCallback = (err: any, receipt: Web3.TransactionReceipt | null) => void;
+      export type GetTxCountCallback = (err: any, count: number) => void;
+      export type SendTxCallback = (err: any, transaction: string) => void;
+      export type SignCallback = (err: any, signed: string) => void;
+      export type CallCallback = (err: any, result: string) => void;
+      export type EstimateGasCallback = (err: any, gasEstimation: number) => void;
+      export type FilterCallback = (err: any, result: string | Web3.Log) => void;
+      export type GetListeningCallback = (err: any, listening: boolean) => void;
+      export type GetPeerCountCallback = (err: any, peerCount: number) => void;
+      export type GetCompilerCallback = (err: any, compilers: string[]) => void;
+      export type CompileCallback = (err: any, contractAndCompilerInfo: any) => void;
+    }
+
     export type WeiUnit = "kwei" | "ada" | "mwei" | "babbage" | "gwei" | "shannon" | "szabo" | "finney" | "ether" | "kether" | "grand" | "einstein" | "mether" | "gether" | "tether";
 
     export class Version {
@@ -63,7 +67,7 @@ declare module "web3" {
       /**
        * The client/node version
        */
-      getNode(callback: VersionCallback): void;
+      getNode(callback: Callbacks.VersionCallback): void;
       /**
        * The client/node version
       */
@@ -72,7 +76,7 @@ declare module "web3" {
       /**
        * The network protocol version
        */
-      getNetwork(callback: VersionCallback): void;
+      getNetwork(callback: Callbacks.VersionCallback): void;
       /**
        * The network protocol version
       */
@@ -81,7 +85,7 @@ declare module "web3" {
       /**
        * The ethereum protocol version
        */
-      getEthereum(callback: VersionCallback): void;
+      getEthereum(callback: Callbacks.VersionCallback): void;
       /**
        * The ethereum protocol version
       */
@@ -90,7 +94,7 @@ declare module "web3" {
       /**
        * The whisper protocol version
        */
-      getWhisper(callback: VersionCallback): void;
+      getWhisper(callback: Callbacks.VersionCallback): void;
       /**
        * The whisper protocol version
       */
@@ -125,7 +129,7 @@ declare module "web3" {
       /**
        * Adds another callback, which will be called when the node starts or stops syncing.
        */
-      addCallback(callback?: GetSyncingCallback): IsSyncing;
+      addCallback(callback?: Callbacks.GetSyncingCallback): IsSyncing;
       /**
        * Adds another callback, which will be called when the node starts or stops syncing.
       */
@@ -434,7 +438,7 @@ declare module "web3" {
     export class Filter {
       get(callback: (err: any, result: any) => void): void;
       getAsync(): Promise<any>;
-      watch(callback: FilterCallback): void;
+      watch(callback: Callbacks.FilterCallback): void;
       watchAsync(): Promise<string | Web3.Log>;
       stopWatching(): void;
     }
@@ -478,7 +482,7 @@ declare module "web3" {
       /**
        * Will call the callback for all events which are created by this contract
        */
-      allEvents(options: "latest" | "pending" | FilterOptions, callback: FilterCallback): Filter;
+      allEvents(options: "latest" | "pending" | FilterOptions, callback: Callbacks.FilterCallback): Filter;
       /**
        * Will call the callback for all events which are created by this contract
       */
@@ -486,7 +490,7 @@ declare module "web3" {
       /**
        * Will call the callback for all events which are created by this contract
        */
-      allEvents(callback: FilterCallback): Filter;
+      allEvents(callback: Callbacks.FilterCallback): Filter;
       /**
        * Will call the callback for all events which are created by this contract
       */
@@ -697,7 +701,7 @@ declare module "web3" {
     /**
      * Is node actively listening for network connections or not.
      */
-    getListening(callback: GetListeningCallback): void;
+    getListening(callback: Web3.Callbacks.GetListeningCallback): void;
     /**
      * Is node actively listening for network connections or not.
     */
@@ -706,7 +710,7 @@ declare module "web3" {
     /**
      * Number of connected peers.
      */
-    getPeerCount(callback: GetPeerCountCallback): void;
+    getPeerCount(callback: Web3.Callbacks.GetPeerCountCallback): void;
     /**
      * Number of connected peers.
     */
@@ -721,7 +725,7 @@ declare module "web3" {
     /**
      * Compiles solidity source code
      */
-    solidity(source: string, callback: CompileCallback): void;
+    solidity(source: string, callback: Web3.Callbacks.CompileCallback): void;
     /**
      * Compiles solidity source code
     */
@@ -734,7 +738,7 @@ declare module "web3" {
     /**
      * Compiles LLL source code
      */
-    lll(source: string, callback: CompileCallback): void;
+    lll(source: string, callback: Web3.Callbacks.CompileCallback): void;
     /**
      * Compiles LLL source code
     */
@@ -747,7 +751,7 @@ declare module "web3" {
     /**
      * Compiles serpent source code
      */
-    serpent(source: string, callback: CompileCallback): void;
+    serpent(source: string, callback: Web3.Callbacks.CompileCallback): void;
     /**
      * Compiles serpent source code
     */
@@ -824,7 +828,7 @@ declare module "web3" {
     /**
      * Call's callback with either a sync object, when the node is syncing or false.
      */
-    getSyncing(callback: GetSyncingCallback): void;
+    getSyncing(callback: Web3.Callbacks.GetSyncingCallback): void;
     /**
      * Call's callback with either a sync object, when the node is syncing or false.
     */
@@ -833,7 +837,7 @@ declare module "web3" {
     /**
      * This convenience function calls the callback everytime a sync starts, updates and stops.
      */
-    isSyncing(callback?: IsSyncingCallback): Web3.IsSyncing;
+    isSyncing(callback?: Web3.Callbacks.IsSyncingCallback): Web3.IsSyncing;
     /**
      * This convenience function calls the callback everytime a sync starts, updates and stops.
     */
@@ -895,7 +899,7 @@ declare module "web3" {
     /**
      * Get the balance of an address at a given block.
      */
-    getBalance(address: string, block: BlockNumberOrHash, callback: GetBalanceCallback): void;
+    getBalance(address: string, block: BlockNumberOrHash, callback: Web3.Callbacks.GetBalanceCallback): void;
     /**
      * Get the balance of an address at a given block.
     */
@@ -903,7 +907,7 @@ declare module "web3" {
     /**
      * Get the balance of an address at a given block.
      */
-    getBalance(address: string, callback: GetBalanceCallback): void;
+    getBalance(address: string, callback: Web3.Callbacks.GetBalanceCallback): void;
     /**
      * Get the balance of an address at a given block.
     */
@@ -916,7 +920,7 @@ declare module "web3" {
     /**
      * Get the storage at a specific position of an address.
      */
-    getStorageAt(address: string, position: number, block: BlockNumberOrHash, callback: GetStorageAtCallback): void;
+    getStorageAt(address: string, position: number, block: BlockNumberOrHash, callback: Web3.Callbacks.GetStorageAtCallback): void;
     /**
      * Get the storage at a specific position of an address.
     */
@@ -924,7 +928,7 @@ declare module "web3" {
     /**
      * Get the storage at a specific position of an address.
      */
-    getStorageAt(address: string, position: number, callback: GetStorageAtCallback): void;
+    getStorageAt(address: string, position: number, callback: Web3.Callbacks.GetStorageAtCallback): void;
     /**
      * Get the storage at a specific position of an address.
     */
@@ -937,7 +941,7 @@ declare module "web3" {
     /**
      * Get the code at a specific address.
      */
-    getCode(address: string, block: BlockNumberOrHash, callback: GetCodeCallback): void;
+    getCode(address: string, block: BlockNumberOrHash, callback: Web3.Callbacks.GetCodeCallback): void;
     /**
      * Get the code at a specific address.
     */
@@ -945,7 +949,7 @@ declare module "web3" {
     /**
      * Get the code at a specific address.
      */
-    getCode(address: string, callback: GetCodeCallback): void;
+    getCode(address: string, callback: Web3.Callbacks.GetCodeCallback): void;
     /**
      * Get the code at a specific address.
     */
@@ -958,7 +962,7 @@ declare module "web3" {
     /**
      * Returns a block matching the block number or block hash.
      */
-    getBlock(block: BlockNumberOrHash, returnTransactionObjects: boolean, callback: GetBlockCallback): void;
+    getBlock(block: BlockNumberOrHash, returnTransactionObjects: boolean, callback: Web3.Callbacks.GetBlockCallback): void;
     /**
      * Returns a block matching the block number or block hash.
     */
@@ -966,7 +970,7 @@ declare module "web3" {
     /**
      * Returns a block matching the block number or block hash.
      */
-    getBlock(block: BlockNumberOrHash, callback: GetBlockCallback): void;
+    getBlock(block: BlockNumberOrHash, callback: Web3.Callbacks.GetBlockCallback): void;
     /**
      * Returns a block matching the block number or block hash.
     */
@@ -979,7 +983,7 @@ declare module "web3" {
     /**
      * Returns the number of transaction in a given block.
      */
-    getBlockTransactionCount(block: BlockNumberOrHash, callback: GetBlockTxCountCallback): void;
+    getBlockTransactionCount(block: BlockNumberOrHash, callback: Web3.Callbacks.GetBlockTxCountCallback): void;
     /**
      * Returns the number of transaction in a given block.
     */
@@ -992,7 +996,7 @@ declare module "web3" {
     /**
      * Returns a blocks uncle by a given uncle index position
      */
-    getUncle(block: BlockNumberOrHash, uncleNumber: number, returnTransactionObjects: boolean, callback: GetUncleCallback): void;
+    getUncle(block: BlockNumberOrHash, uncleNumber: number, returnTransactionObjects: boolean, callback: Web3.Callbacks.GetUncleCallback): void;
     /**
      * Returns a blocks uncle by a given uncle index position
     */
@@ -1000,7 +1004,7 @@ declare module "web3" {
     /**
      * Returns a blocks uncle by a given uncle index position
      */
-    getUncle(block: BlockNumberOrHash, uncleNumber: number, callback: GetUncleCallback): void;
+    getUncle(block: BlockNumberOrHash, uncleNumber: number, callback: Web3.Callbacks.GetUncleCallback): void;
     /**
      * Returns a blocks uncle by a given uncle index position
     */
@@ -1013,7 +1017,7 @@ declare module "web3" {
     /**
      * Returns a transaction matching the given transaction hash
      */
-    getTransaction(transaction: string, callback: GetTransactionCallback): void;
+    getTransaction(transaction: string, callback: Web3.Callbacks.GetTransactionCallback): void;
     /**
      * Returns a transaction matching the given transaction hash
     */
@@ -1026,7 +1030,7 @@ declare module "web3" {
     /**
      * Returns a transaction based on a block hash or number and the transactions index position.
      */
-    getTransactionFromBlock(block: BlockNumberOrHash, index: number, callback: GetTxFromBlockCallback): void;
+    getTransactionFromBlock(block: BlockNumberOrHash, index: number, callback: Web3.Callbacks.GetTxFromBlockCallback): void;
     /**
      * Returns a transaction based on a block hash or number and the transactions index position.
     */
@@ -1040,7 +1044,7 @@ declare module "web3" {
      * Returns the receipt of a transaction by transaction hash.
      * Note That the receipt is not available for pending transactions.
      */
-    getTransactionReceipt(transaction: string, callback: GetTxReceiptCallback): void;
+    getTransactionReceipt(transaction: string, callback: Web3.Callbacks.GetTxReceiptCallback): void;
     /**
      * Returns the receipt of a transaction by transaction hash.
     */
@@ -1054,7 +1058,7 @@ declare module "web3" {
     /**
      * Get the numbers of transactions sent from this address
      */
-    getTransactionCount(address: string, callback: GetTxCountCallback): void;
+    getTransactionCount(address: string, callback: Web3.Callbacks.GetTxCountCallback): void;
     /**
      * Get the numbers of transactions sent from this address
     */
@@ -1067,7 +1071,7 @@ declare module "web3" {
     /**
      * Sends a transaction to the network
      */
-    sendTransaction(request: Web3.TransactionRequest, callback: SendTxCallback): void;
+    sendTransaction(request: Web3.TransactionRequest, callback: Web3.Callbacks.SendTxCallback): void;
     /**
      * Sends a transaction to the network
     */
@@ -1080,7 +1084,7 @@ declare module "web3" {
     /**
      * Sends an already signed transaction. For example can be signed using: https://github.com/SilentCicero/ethereumjs-accounts
      */
-    sendRawTransaction(signedTransaction: string, callback: SendTxCallback): void;
+    sendRawTransaction(signedTransaction: string, callback: Web3.Callbacks.SendTxCallback): void;
     /**
      * Sends an already signed transaction. For example can be signed using: https://github.com/SilentCicero/ethereumjs-accounts
     */
@@ -1093,7 +1097,7 @@ declare module "web3" {
     /**
      * Signs data from a specific account. This account needs to be unlocked.
      */
-    sign(address: string, data: string, callback: SignCallback): void;
+    sign(address: string, data: string, callback: Web3.Callbacks.SignCallback): void;
     /**
      * Signs data from a specific account. This account needs to be unlocked.
     */
@@ -1106,7 +1110,7 @@ declare module "web3" {
     /**
      * Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
      */
-    call(request: Web3.TransactionRequest, block: BlockNumberOrHash, callback: CallCallback): void;
+    call(request: Web3.TransactionRequest, block: BlockNumberOrHash, callback: Web3.Callbacks.CallCallback): void;
     /**
      * Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
     */
@@ -1115,7 +1119,7 @@ declare module "web3" {
     /**
      * Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
      */
-    call(request: Web3.TransactionRequest, callback: CallCallback): void;
+    call(request: Web3.TransactionRequest, callback: Web3.Callbacks.CallCallback): void;
     /**
      * Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
     */
@@ -1128,7 +1132,7 @@ declare module "web3" {
     /**
      * Executes a message call or transaction, which is directly executed in the VM of the node, but never mined into the blockchain and returns the amount of the gas used.
      */
-    estimateGas(request: Web3.TransactionRequest, callback: EstimateGasCallback): void;
+    estimateGas(request: Web3.TransactionRequest, callback: Web3.Callbacks.EstimateGasCallback): void;
     /**
      * Executes a message call or transaction, which is directly executed in the VM of the node, but never mined into the blockchain and returns the amount of the gas used.
     */
@@ -1141,7 +1145,7 @@ declare module "web3" {
     /**
      * @param options The string "latest" or "pending" to watch for changes in the latest block or pending transactions respectively. Or a filter options object
      */
-    filter(options: "latest" | "pending" | Web3.FilterOptions, callback: FilterCallback): Web3.Filter;
+    filter(options: "latest" | "pending" | Web3.FilterOptions, callback: Web3.Callbacks.FilterCallback): Web3.Filter;
     filterAsync(options: "latest" | "pending" | Web3.FilterOptions): Promise<string | Web3.Log>;
     /**
      * @param options The string "latest" or "pending" to watch for changes in the latest block or pending transactions respectively. Or a filter options object
@@ -1156,7 +1160,7 @@ declare module "web3" {
     /**
      * Gets a list of available compilers.
      */
-    getCompilers(callback: GetCompilerCallback): void;
+    getCompilers(callback: Web3.Callbacks.GetCompilerCallback): void;
     /**
      * Gets a list of available compilers.
     */
