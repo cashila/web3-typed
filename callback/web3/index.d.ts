@@ -1049,3 +1049,21 @@ declare module "web3/abi" {
   export type DefinitionItem = Function | Fallback | Constructor | Event;
   export type Definition = DefinitionItem[];
 }
+
+declare module "web3/parsed" {
+  export interface ParsedLog<NAME, ARGS> {
+    address: string;
+    blockHash: string;
+    blockNumber: number;
+    logIndex: number;
+    transactionHash: string;
+    transactionIndex: number;
+    event: NAME;
+    args: ARGS;
+  }
+
+  export interface ParsedMethod<NAME, ARGS extends {}> {
+    name: NAME;
+    args: ARGS;
+  }
+}
