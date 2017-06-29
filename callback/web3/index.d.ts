@@ -477,15 +477,29 @@ declare module "web3" {
          * Should be called to check if a connection to a node exists
          */
         isConnected(): boolean;
+
+        /**
+         * Should be called to make sync request
+         */
+        send(payload: any): any;
+
+        /**
+         * Should be used to make async request
+         */
+        sendAsync(payload: any, callback: (err: any, result: any) => void): void;
       }
 
       export class HttpProvider implements Provider {
         constructor(host?: string);
         isConnected(): boolean;
+        send(payload: any): any;
+        sendAsync(payload: any, callback: (err: any, result: any) => void): void;
       }
       export class IpcProvider implements Provider {
         constructor(path: string, net: any);
         isConnected(): boolean;
+        send(payload: any): any;
+        sendAsync(payload: any, callback: (err: any, result: any) => void): void;
       }
     }
   }
