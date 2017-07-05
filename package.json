@@ -14,5 +14,6 @@
   "homepage": "https://github.com/cashila/web3-typed#readme",
   "dependencies": {
     "@types/bignumber.js": "^4.0.2"
-  }
+  },
+  "types": "promise/web3/index.d.ts"
 }
