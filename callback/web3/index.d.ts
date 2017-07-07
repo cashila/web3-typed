@@ -118,7 +118,7 @@ declare module "web3" {
       /**
        * Stops the syncing callbacks.
        */
-      stopWatching(): void;
+      stopWatching(callback?: (err: any) => void): void;
     }
 
     export interface Block {
@@ -407,7 +407,7 @@ declare module "web3" {
       /**
        * An address or a list of addresses to only get logs from particular account(s).
        */
-      address?: string | string[];
+      address?: string | string[] | null;
 
       /**
        *  An array of values which must each appear in the log entries. The order is important, if you want to leave topics out use null, e.g. [null, '0x00...']. You can also pass another array for each topic with options for that topic e.g. [null, ['option1', 'option2']]
@@ -418,7 +418,7 @@ declare module "web3" {
     export class Filter {
       get(callback: (err: any, result: any) => void): void;
       watch(callback: Callbacks.FilterCallback): void;
-      stopWatching(): void;
+      stopWatching(callback?: (err: any) => void): void;
     }
 
     export interface ContractFactory<T extends Contract> {
