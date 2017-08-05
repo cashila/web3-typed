@@ -609,7 +609,7 @@ declare module "web3" {
      * @param value
      * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether
      */
-    fromWei(value: number | string, unit: Web3.WeiUnit): String;
+    fromWei(value: number | string, unit: Web3.WeiUnit): string;
 
     /**
      * Converts a number of wei into the following ethereum units:
@@ -645,7 +645,7 @@ declare module "web3" {
      * @param value
      * @param unit One of kwei/ada, mwei/babbage, gwei/shannon, szabo, finney, ether, kether/grand/einstein, mether, gether, tether
      */
-    toWei(value: number | string, unit: Web3.WeiUnit): String;
+    toWei(value: number | string, unit: Web3.WeiUnit): string;
 
     /**
      * Converts an ethereum unit into wei. Possible units are:
