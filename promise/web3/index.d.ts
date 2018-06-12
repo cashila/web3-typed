@@ -453,6 +453,8 @@ declare module "web3" {
        * Instantiate contract by address
        */
       at(address: string): T;
+
+      new: any;
     }
 
     export interface Method<R> {
